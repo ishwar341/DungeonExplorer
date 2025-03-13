@@ -1,17 +1,28 @@
-﻿namespace DungeonExplorer
+﻿
+using DungeonExplorer;
+
+public class Room
 {
-    public class Room
+    private string description;
+    private string item;
+
+    public Room(string description, string item)
     {
-        private string description;
+        this.description = description;
+        this.item = item;
+    }
 
-        public Room(string description)
-        {
-            this.description = description;
-        }
+    public string GetDescription()
+    {
+        return description + (string.IsNullOrEmpty(item) ? "" : $" There is a {item} here.");
+    }
 
-        public string GetDescription()
-        {
-            return description;
-        }
+    public string GetItem()
+    {
+        string temp = item;
+        item = ""; // Remove item from room after pickup
+        return temp;
     }
 }
+
+
